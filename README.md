@@ -110,9 +110,9 @@ ls -lh plots/
 #Output
 baywatch_plot_<job_id>.png
 
-##Testing
+#Testing
 #After starting the containers, can open a second terminal and run the tests
-
+#Searached ip how to run the uv inside the baywatch api, will run all 3 tests here
 docker compose exec baywatch-api uv run -- pytest test_api.py test_jobs.py test_worker.py
 
 #The tests include:

@@ -18,7 +18,7 @@ spec:
       containers:
         - name: baywatch-prod-worker
           imagePullPolicy: Always
-          image: aravp4/baywatch_api:0.1.0
+          image: aravp4/baywatch_api:1.0
           command: ["uv", "run", "--", "python", "worker.py"]
           env:
           - name: REDIS_IP

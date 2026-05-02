@@ -18,7 +18,7 @@ spec:
       containers:
         - name: baywatch-prod-fast-api
           imagePullPolicy: Always
-          image: aravp4/baywatch_api:0.1.0
+          image: aravp4/baywatch_api:1.0
           ports:
           - name: http
             containerPort: 8000
