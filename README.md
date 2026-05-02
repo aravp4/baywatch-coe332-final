@@ -147,6 +147,9 @@ This file has some unit tests for the worker helper functions.
 - Dockerfile
 Builds the Python image, installs uv and dependencies, and copies the api.py, jobs.py, worker.py, and test scripts.
 
+- Project_Pitch_AravPatel_COE332.pdf
+This is the final project pitch with the updates to the baseModel and the second station
+
 - data/.gitcanary
 This keeps the data folder in Git. The Redis dump.rdb file can appear here after running the containers, but it should not be committed.
 
