@@ -1,0 +1,27 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baywatch-test-worker-deployment
+  labels:
+    app: baywatch-test-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: baywatch-test-worker
+  template:
+    metadata:
+      labels:
+        app: baywatch-test-worker
+    spec:
+      containers:
+        - name: baywatch-test-worker
+          imagePullPolicy: Always
+          image: aravp4/baywatch_api:0.1.0
+          command: ["uv", "run", "--", "python", "worker.py"]
+          env:
+          - name: REDIS_IP
+            value: baywatch-test-redis-service
+          - name: LOG_LEVEL
+            value: INFO

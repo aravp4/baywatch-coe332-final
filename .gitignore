@@ -1,0 +1,20 @@
+#Python cache
+__pycache__/
+*.py[cod]
+*.pyc
+
+#Virtual envs
+.venv/
+.uv/
+
+#Redis runtime data
+data/dump.rdb
+
+#Worker plot outputs
+plots/*.png
+
+#Test/cache files
+.pytest_cache/
+
+#Result files
+result.json

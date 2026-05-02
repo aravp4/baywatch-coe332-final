@@ -1,0 +1,35 @@
+services:
+  redis-db:
+    image: redis:7
+    ports:
+      - 6379:6379
+    volumes:
+      - ./data:/data:rw
+    command: ["--save", "1", "1"]
+
+  baywatch-api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - redis-db
+    image: baywatch_api:1.0
+    network_mode: host
+    volumes:
+      - ./plots:/plots:rw
+    environment:
+      REDIS_IP: 127.0.0.1
+      LOG_LEVEL: INFO
+
+  worker:
+    depends_on:
+      - redis-db
+      - baywatch-api
+    image: baywatch_api:1.0
+    network_mode: host
+    volumes:
+      - ./plots:/plots:rw
+    environment:
+      REDIS_IP: 127.0.0.1
+      LOG_LEVEL: INFO
+    command: ["uv", "run", "--", "python", "worker.py"]

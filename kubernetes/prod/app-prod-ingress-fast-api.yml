@@ -1,0 +1,20 @@
+
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: baywatch-prod-fast-api-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "aravp06-baywatch-prod.coe332.tacc.cloud"
+    http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: baywatch-prod-fast-api-nodeport-service
+              port:
+                  number: 8000

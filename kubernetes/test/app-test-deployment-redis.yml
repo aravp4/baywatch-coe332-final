@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baywatch-test-redis-deployment
+  labels:
+    app: baywatch-test-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: baywatch-test-redis
+  template:
+    metadata:
+      labels:
+        app: baywatch-test-redis
+    spec:
+      containers:
+        - name: baywatch-test-redis
+          image: redis:7
+          command: ["redis-server"]
+          args: ["--save", "1", "1"]
+          ports:
+          - name: redis
+            containerPort: 6379
+          volumeMounts:
+          - name: baywatch-test-redis-data
+            mountPath: "/data"
+      volumes:
+      - name: baywatch-test-redis-data
+        persistentVolumeClaim:
+          claimName: baywatch-test-redis-data

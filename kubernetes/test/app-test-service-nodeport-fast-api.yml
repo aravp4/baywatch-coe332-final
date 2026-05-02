@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: baywatch-test-fast-api-nodeport-service
+spec:
+  type: NodePort
+  selector:
+    app: baywatch-test-fast-api
+  ports:
+    - port: 8000
+      targetPort: 8000

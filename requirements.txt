@@ -1,0 +1,7 @@
+fastapi[standard]
+redis
+hotqueue
+requests
+pydantic
+matplotlib
+pytest
